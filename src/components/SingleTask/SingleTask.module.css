@@ -1,0 +1,18 @@
+.SingleTask {
+    width: auto;
+    /* padding: 25%; */
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #eee;
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.SingleTask .detail_task{
+    font-size: 1.5rem;
+}
+
+.SingleTask .date_task{
+    font-style: italic;
+}
