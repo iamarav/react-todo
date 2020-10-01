@@ -9,12 +9,13 @@ class AllTasks extends Component {
     this.states = {
     }
   }
-  nTasks = null;
 
   render(){
+    let nTasks = null;
+
     if( Array.isArray( this.props.tasks ) && this.props.tasks.length > 0  )
     { 
-      this.nTasks = (
+      nTasks = (
         <div>
           {
             this.props.tasks
@@ -43,7 +44,7 @@ class AllTasks extends Component {
 
     return (      
       <div className={styles.AllTasks} >
-        { this.nTasks }
+        { nTasks }
       </div>
     );
   }

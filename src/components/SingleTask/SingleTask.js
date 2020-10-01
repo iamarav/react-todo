@@ -8,8 +8,6 @@ class SingleTask extends Component {
     }
   }
   render(){
-    // let markAsCompletedButton = null;
-    console.log( this.props )
     let markAsCompletedButton = this.props.status !== "Completed" ? 
       ( 
         <>

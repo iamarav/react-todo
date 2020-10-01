@@ -49,10 +49,15 @@ class TaskAppComponent extends Component{
   }
 
   deleteTask = ( $index ) => {
-    let mConfirm = window.confirm( 'Are you sure?/nYou want to reset all the tasks?' );
+    let mConfirm = window.confirm( 'Are you sure?/nYou want to delete the task '+$index+'?' );
     if( mConfirm )
       {
-        this.state.allTasks = this.state.allTasks.splice( this.state.allTasks.indexOf( $index ), 1 )
+        var array = [...this.state.allTasks];
+        if ($index !== -1) {
+          array.splice($index, 1);
+          this.setState({allTasks: array});
+        }
+        // console.log( array )
       }
       alert( 'Task deleted successfully' )
       console.log( this.state.stateChanged )
