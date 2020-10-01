@@ -12,6 +12,7 @@ class TaskAppComponent extends Component{
       placeholder: "Enter a new task", 
       allTasks: [],
       inputVal: "",
+      stateChanged : 0
     }
   }
 
@@ -27,6 +28,7 @@ class TaskAppComponent extends Component{
     let mVal = {
       task: this.state.inputVal,
       date: Date(),
+      status: "Not Completed"
     }
     this.setState({ 
           allTasks: [...this.state.allTasks, mVal],
@@ -36,7 +38,7 @@ class TaskAppComponent extends Component{
     alert( 'Task Added' )
   }
   resetTasks = () => {
-    let mConfirm = window.confirm( 'Are you sure?/nYou want to reset all the tasks?' );
+    let mConfirm = window.confirm( 'Are you sure?/nYou want to delete this task?' );
     if( mConfirm )
       {
         this.setState({ allTasks: [] }) // reset value to the state tasks
@@ -44,7 +46,24 @@ class TaskAppComponent extends Component{
       this.forceUpdate();
 
     alert( 'Tasks reset success!' )
+  }
 
+  deleteTask = ( $index ) => {
+    let mConfirm = window.confirm( 'Are you sure?/nYou want to reset all the tasks?' );
+    if( mConfirm )
+      {
+        this.state.allTasks = this.state.allTasks.splice( this.state.allTasks.indexOf( $index ), 1 )
+      }
+      alert( 'Task deleted successfully' )
+      console.log( this.state.stateChanged )
+  }
+  markTaskDone = ( $index ) =>
+  { 
+    var tempArray = this.state.allTasks,
+      element = tempArray[ $index ]
+      element.status = "Completed"
+    this.setState( { allTasks: tempArray  } )
+    alert( "Task marked Completed" )
   }
   render(){
     return(
@@ -73,7 +92,11 @@ class TaskAppComponent extends Component{
                 { this.state.btnTextReset }
               </button>
             </div>
-          <AllTasks tasks={this.state.allTasks} ></AllTasks>
+          <AllTasks 
+            tasks={this.state.allTasks}
+            deleteAction = { this.deleteTask }
+            completedAction = { this.markTaskDone }
+            ></AllTasks>
 
           </div>
 

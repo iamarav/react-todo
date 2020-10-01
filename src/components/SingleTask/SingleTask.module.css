@@ -16,3 +16,20 @@
 .SingleTask .date_task{
     font-style: italic;
 }
+
+.SingleTask .delete_task_button{
+    background-color: yellow;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.SingleTask .mark_completed_button{
+    background-color: green;
+    padding: 5px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-left: 10px;
+}

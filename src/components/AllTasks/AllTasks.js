@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import styles from './AllTasks.module.css';
 
 import SingleTask from '../SingleTask/SingleTask';
@@ -18,13 +17,19 @@ class AllTasks extends Component {
       this.nTasks = (
         <div>
           {
-            this.props.tasks.reverse().map( (task, index)  => {
+            this.props.tasks
+                    // .reverse()
+                    .map( (task, index)  => {
 
               return (
                     <SingleTask 
+                        index={ index }
                         task={ task.task } 
                         key={ index } 
                         date={ task.date }
+                        status={ task.status }
+                        deleteAction = { this.props.deleteAction }
+                        completedAction = { this.props.completedAction }
                         >
                         </SingleTask>
                     )              
